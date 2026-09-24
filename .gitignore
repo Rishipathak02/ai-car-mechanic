@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environment
+backend/venv/
+venv/
+.venv/
+
+# Environment Variables
+backend/.env
+.env
+
+# Database
+backend/mechanic.db
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploads
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Angular
+frontend/node_modules/
+frontend/.angular/
+frontend/dist/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

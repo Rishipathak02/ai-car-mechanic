@@ -1,0 +1,1737 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    max-width: 100%;
+
+    overflow-x: hidden;
+}
+
+:host {
+    display: block;
+
+    width: 100%;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+.app-shell {
+    width: 100%;
+    min-height: 100vh;
+
+    background: #f4f7fb;
+
+    color: #172033;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.topbar {
+    width: 100%;
+    min-height: 72px;
+
+    padding: 0 clamp(16px, 4vw, 60px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e5e9f0;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+}
+
+.brand {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eef2ff;
+
+    border-radius: 11px;
+
+    font-size: 20px;
+}
+
+.brand-text {
+    min-width: 0;
+}
+
+.brand h1 {
+    margin: 0;
+
+    font-size: 19px;
+    line-height: 1.2;
+
+    color: #172033;
+}
+
+.brand p {
+    margin: 4px 0 0;
+
+    font-size: 10px;
+
+    color: #667085;
+}
+
+.status {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 7px 11px;
+
+    background: #ecfdf3;
+
+    border: 1px solid #d1fadf;
+
+    border-radius: 20px;
+
+    color: #067647;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.status-dot,
+.online-dot {
+    width: 7px;
+    height: 7px;
+
+    min-width: 7px;
+
+    border-radius: 50%;
+
+    background: #12b76a;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+    width: min(
+        calc(100% - 40px),
+        1500px
+    );
+
+    margin: 0 auto;
+
+    padding: 28px 0 45px;
+}
+
+
+/* =========================================================
+   MAIN 3-COLUMN GRID
+========================================================= */
+
+.main-grid {
+    width: 100%;
+    max-width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 20px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    width: 100%;
+    min-width: 0;
+
+    min-height: 600px;
+
+    padding: 32px;
+
+    display: flex;
+    align-items: stretch;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111827 0%,
+            #1f2937 55%,
+            #273449 100%
+        );
+
+    color: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.12);
+
+    overflow: hidden;
+}
+
+.hero-content {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.badge {
+    width: fit-content;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+}
+
+.hero h2 {
+    margin: 20px 0 12px;
+
+    font-size: clamp(
+        25px,
+        2.2vw,
+        34px
+    );
+
+    line-height: 1.15;
+
+    color: #ffffff;
+
+    overflow-wrap: anywhere;
+}
+
+.hero p {
+    max-width: 100%;
+
+    margin: 0;
+
+    font-size: 12px;
+
+    line-height: 1.65;
+
+    color: #cbd5e1;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   HERO POINTS
+========================================================= */
+
+.hero-points {
+    margin-top: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.hero-point {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 11px;
+
+    border-radius: 11px;
+
+    background: rgba(255, 255, 255, 0.055);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-point-icon {
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border-radius: 9px;
+
+    font-size: 16px;
+}
+
+.hero-point > div {
+    min-width: 0;
+}
+
+.hero-point strong {
+    display: block;
+
+    font-size: 10px;
+
+    color: #ffffff;
+}
+
+.hero-point small {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 8px;
+
+    color: #94a3b8;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   HERO FOOTER
+========================================================= */
+
+.hero-footer {
+    margin-top: auto;
+
+    padding-top: 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.hero-footer-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border-radius: 9px;
+}
+
+.hero-footer strong {
+    display: block;
+
+    font-size: 10px;
+
+    color: #ffffff;
+}
+
+.hero-footer small {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 8px;
+
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   COMMON CARDS
+========================================================= */
+
+.chat-card,
+.diagnosis-card {
+    width: 100%;
+    min-width: 0;
+
+    height: 600px;
+    min-height: 600px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e9f0;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.05);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CHAT
+========================================================= */
+
+.chat-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    width: 100%;
+    min-width: 0;
+
+    padding: 17px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    border-bottom: 1px solid #edf0f4;
+
+    flex-shrink: 0;
+}
+
+.card-heading {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.card-icon {
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eef2ff;
+
+    border-radius: 9px;
+
+    font-size: 17px;
+}
+
+.card-heading > div:last-child {
+    min-width: 0;
+}
+
+.card-heading h3 {
+    margin: 0;
+
+    font-size: 14px;
+
+    color: #172033;
+}
+
+.card-heading p {
+    margin: 4px 0 0;
+
+    font-size: 9px;
+
+    color: #667085;
+}
+
+.online-badge,
+.completed-badge {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 5px 8px;
+
+    border-radius: 20px;
+
+    font-size: 8px;
+    font-weight: 600;
+}
+
+.online-badge {
+    background: #ecfdf3;
+
+    color: #067647;
+}
+
+.completed-badge {
+    background: #ecfdf3;
+
+    color: #067647;
+}
+
+
+/* =========================================================
+   MESSAGES
+========================================================= */
+
+.messages {
+    width: 100%;
+    min-width: 0;
+
+    flex: 1;
+    min-height: 0;
+
+    padding: 17px;
+
+    background: #fafbfc;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scrollbar-width: thin;
+}
+
+.message-row {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 8px;
+
+    margin-bottom: 13px;
+}
+
+.user-row {
+    flex-direction: row-reverse;
+}
+
+.avatar {
+    width: 29px;
+    height: 29px;
+    min-width: 29px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eef2ff;
+
+    border-radius: 50%;
+
+    font-size: 13px;
+}
+
+.user-avatar {
+    background: #e8f3ff;
+}
+
+.message {
+    max-width: 80%;
+    min-width: 0;
+
+    padding: 9px 11px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e9f0;
+
+    border-radius: 10px;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.user-message {
+    background: #eef2ff;
+
+    border-color: #dbe4ff;
+}
+
+.message-name {
+    margin-bottom: 4px;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    color: #667085;
+}
+
+.message-text {
+    font-size: 10px;
+
+    line-height: 1.55;
+
+    color: #344054;
+
+    white-space: pre-wrap;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   EMPTY CHAT
+========================================================= */
+
+.empty-chat {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 25px;
+}
+
+.empty-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eef2ff;
+
+    border-radius: 50%;
+
+    font-size: 20px;
+}
+
+.empty-chat h4 {
+    margin: 12px 0 6px;
+
+    font-size: 13px;
+
+    color: #172033;
+}
+
+.empty-chat p {
+    max-width: 240px;
+
+    margin: 0;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+
+    color: #667085;
+}
+
+
+/* =========================================================
+   THINKING
+========================================================= */
+
+.thinking {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+}
+
+.thinking span {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #667085;
+}
+
+.thinking small {
+    margin-left: 4px;
+
+    font-size: 8px;
+
+    color: #667085;
+}
+
+
+/* =========================================================
+   ACTION BAR
+========================================================= */
+
+.action-bar {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+
+    padding: 10px 12px;
+
+    border-top: 1px solid #edf0f4;
+
+    flex-shrink: 0;
+}
+
+.upload-button,
+.diagnosis-button {
+    min-width: 0;
+
+    min-height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    padding: 7px;
+
+    border-radius: 8px;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    text-align: center;
+}
+
+.upload-button {
+    background: #f8fafc;
+
+    border: 1px solid #d9dee8;
+
+    color: #344054;
+}
+
+.diagnosis-button {
+    border: none;
+
+    background: #172033;
+
+    color: #ffffff;
+}
+
+.diagnosis-button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   COMPOSER
+========================================================= */
+
+.composer {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 10px 12px;
+
+    border-top: 1px solid #edf0f4;
+
+    flex-shrink: 0;
+}
+
+.composer input {
+    width: 100%;
+    min-width: 0;
+
+    height: 35px;
+
+    padding: 0 10px;
+
+    border: 1px solid #d9dee8;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 9px;
+
+    color: #172033;
+}
+
+.composer input:focus {
+    border-color: #98a2b3;
+}
+
+.send-button {
+    height: 35px;
+
+    min-width: 55px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #172033;
+
+    color: #ffffff;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.send-button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   DIAGNOSIS
+========================================================= */
+
+.diagnosis-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.diagnosis-header {
+    width: 100%;
+    min-width: 0;
+
+    padding: 17px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    border-bottom: 1px solid #edf0f4;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   DIAGNOSIS CONTENT
+========================================================= */
+
+.diagnosis-content {
+    width: 100%;
+    min-width: 0;
+
+    flex: 1;
+    min-height: 0;
+
+    padding: 17px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    font-size: 10px;
+
+    line-height: 1.65;
+
+    color: #344054;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+
+    scrollbar-width: thin;
+}
+
+.diagnosis-content h1,
+.diagnosis-content h2,
+.diagnosis-content h3,
+.diagnosis-content h4 {
+    margin-top: 12px;
+    margin-bottom: 7px;
+
+    color: #172033;
+
+    overflow-wrap: anywhere;
+}
+
+.diagnosis-content p {
+    margin: 7px 0;
+}
+
+.diagnosis-content ul,
+.diagnosis-content ol {
+    margin: 7px 0;
+
+    padding-left: 18px;
+}
+
+.diagnosis-content li {
+    margin-bottom: 4px;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   EMPTY DIAGNOSIS
+========================================================= */
+
+.empty-diagnosis {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    padding: 30px 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.empty-diagnosis-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eef2ff;
+
+    border-radius: 50%;
+
+    font-size: 25px;
+}
+
+.empty-diagnosis h3 {
+    margin: 15px 0 7px;
+
+    font-size: 15px;
+
+    color: #172033;
+}
+
+.empty-diagnosis p {
+    max-width: 245px;
+
+    margin: 0;
+
+    font-size: 9px;
+
+    line-height: 1.6;
+
+    color: #667085;
+}
+
+.diagnosis-steps {
+    width: 100%;
+    max-width: 240px;
+
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.diagnosis-steps div {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px 9px;
+
+    background: #f8fafc;
+
+    border: 1px solid #edf0f4;
+
+    border-radius: 8px;
+
+    text-align: left;
+
+    font-size: 9px;
+
+    color: #475467;
+}
+
+.diagnosis-steps span {
+    width: 21px;
+    height: 21px;
+    min-width: 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #172033;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   RECOMMENDATION
+========================================================= */
+
+.recommendation {
+    width: calc(100% - 30px);
+
+    margin: 0 15px 12px;
+
+    padding: 10px;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 8px;
+
+    background: #fffbeb;
+
+    border: 1px solid #fef0c7;
+
+    border-radius: 9px;
+
+    flex-shrink: 0;
+}
+
+.recommendation-icon {
+    width: 27px;
+    height: 27px;
+    min-width: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+
+    border-radius: 7px;
+}
+
+.recommendation-text {
+    min-width: 0;
+}
+
+.recommendation h4 {
+    margin: 0;
+
+    font-size: 9px;
+
+    color: #7a5d00;
+}
+
+.recommendation p {
+    margin: 3px 0 0;
+
+    font-size: 8px;
+
+    line-height: 1.45;
+
+    color: #856404;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   BOOK BUTTON
+========================================================= */
+
+.book-button {
+    width: calc(100% - 30px);
+
+    min-height: 37px;
+
+    margin: 0 15px 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #172033;
+
+    color: #ffffff;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   BOOKING
+========================================================= */
+
+.booking-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin-top: 20px;
+
+    padding: 22px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e9f0;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.05);
+
+    overflow: hidden;
+}
+
+.booking-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+}
+
+.booking-title {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.booking-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eef2ff;
+
+    border-radius: 9px;
+}
+
+.booking-title h3 {
+    margin: 0;
+
+    font-size: 14px;
+
+    color: #172033;
+}
+
+.booking-title p {
+    margin: 4px 0 0;
+
+    font-size: 9px;
+
+    color: #667085;
+}
+
+.close-button {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e5e9f0;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #667085;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   BOOKING FORM
+========================================================= */
+
+.booking-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+.field {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+.field label {
+    font-size: 9px;
+
+    font-weight: 600;
+
+    color: #344054;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    max-width: 100%;
+
+    padding: 9px 10px;
+
+    border: 1px solid #d9dee8;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    color: #172033;
+
+    background: #ffffff;
+}
+
+.field input {
+    height: 36px;
+}
+
+.field textarea {
+    min-height: 80px;
+
+    resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+    border-color: #98a2b3;
+}
+
+.confirm-button {
+    width: 100%;
+
+    min-height: 39px;
+
+    margin-top: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #172033;
+
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    width: 100%;
+
+    padding: 20px;
+
+    text-align: center;
+
+    color: #98a2b3;
+
+    font-size: 9px;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .container {
+        width: calc(100% - 32px);
+    }
+
+    .main-grid {
+        gap: 16px;
+    }
+
+    .hero {
+        min-height: 570px;
+
+        padding: 27px;
+    }
+
+    .chat-card,
+    .diagnosis-card {
+        height: 570px;
+        min-height: 570px;
+    }
+
+    .hero h2 {
+        font-size: 27px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    .container {
+        width: calc(100% - 28px);
+    }
+
+    .main-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 16px;
+    }
+
+    /*
+       Hero takes full first row
+    */
+
+    .hero {
+        grid-column: 1 / -1;
+
+        min-height: 260px;
+
+        padding: 26px;
+    }
+
+    .hero h2 {
+        font-size: 27px;
+    }
+
+    .hero p {
+        max-width: 650px;
+    }
+
+    .hero-points {
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 10px;
+    }
+
+    .hero-footer {
+        margin-top: 20px;
+    }
+
+    .chat-card,
+    .diagnosis-card {
+        height: 560px;
+        min-height: 560px;
+    }
+}
+
+
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        grid-column: auto;
+
+        min-height: auto;
+
+        padding: 24px;
+    }
+
+    .hero-points {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-footer {
+        margin-top: 20px;
+    }
+
+    .chat-card,
+    .diagnosis-card {
+        height: 540px;
+        min-height: 540px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .topbar {
+        min-height: 64px;
+        height: 64px;
+
+        padding: 0 14px;
+    }
+
+    .brand-icon {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+
+        font-size: 18px;
+    }
+
+    .brand h1 {
+        font-size: 17px;
+    }
+
+    .brand p,
+    .status {
+        display: none;
+    }
+
+    .container {
+        width: calc(100% - 20px);
+
+        padding: 18px 0 30px;
+    }
+
+    .main-grid {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 16px;
+    }
+
+    .hero {
+        width: 100%;
+
+        min-height: 0;
+
+        padding: 22px 19px;
+
+        border-radius: 15px;
+    }
+
+    .hero h2 {
+        font-size: 23px;
+
+        margin-top: 15px;
+    }
+
+    .hero p {
+        font-size: 10px;
+    }
+
+    .hero-points {
+        margin-top: 22px;
+
+        gap: 9px;
+    }
+
+    .hero-point {
+        padding: 9px;
+    }
+
+    .chat-card,
+    .diagnosis-card {
+        width: 100%;
+
+        height: 520px;
+        min-height: 520px;
+
+        border-radius: 15px;
+    }
+
+    .messages {
+        padding: 14px;
+    }
+
+    .message {
+        max-width: 87%;
+    }
+
+    .diagnosis-content {
+        padding: 14px;
+
+        font-size: 9px;
+    }
+
+    .booking-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field.full {
+        grid-column: auto;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .container {
+        width: calc(100% - 14px);
+    }
+
+    .hero {
+        padding: 19px 16px;
+    }
+
+    .hero h2 {
+        font-size: 21px;
+    }
+
+    .hero p {
+        font-size: 9px;
+    }
+
+    .chat-card,
+    .diagnosis-card {
+        height: 500px;
+        min-height: 500px;
+    }
+
+    .card-header,
+    .diagnosis-header {
+        padding: 13px;
+    }
+
+    .online-badge,
+    .completed-badge {
+        display: none;
+    }
+
+    .action-bar {
+        grid-template-columns: 1fr;
+    }
+
+    .upload-button,
+    .diagnosis-button {
+        width: 100%;
+    }
+
+    .composer {
+        padding: 9px;
+    }
+
+    .composer input {
+        font-size: 8px;
+    }
+
+    .diagnosis-content {
+        padding: 12px;
+
+        font-size: 8px;
+    }
+
+    .booking-card {
+        padding: 15px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .container {
+        width: calc(100% - 10px);
+    }
+
+    .hero {
+        padding: 17px 13px;
+    }
+
+    .hero h2 {
+        font-size: 19px;
+    }
+
+    .hero p {
+        font-size: 9px;
+    }
+
+    .chat-card,
+    .diagnosis-card {
+        height: 480px;
+        min-height: 480px;
+    }
+
+    .message {
+        max-width: 90%;
+    }
+
+    .message-text {
+        font-size: 8px;
+    }
+}
+
+
+/* =========================================================
+   SCROLLBARS
+========================================================= */
+
+.messages::-webkit-scrollbar,
+.diagnosis-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.messages::-webkit-scrollbar-track,
+.diagnosis-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.messages::-webkit-scrollbar-thumb,
+.diagnosis-content::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+
+    border-radius: 10px;
+}
+
+.messages::-webkit-scrollbar-thumb:hover,
+.diagnosis-content::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+
+/* =========================================================
+   OVERFLOW SAFETY
+========================================================= */
+
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+}
+
+input,
+textarea,
+button {
+    max-width: 100%;
+}

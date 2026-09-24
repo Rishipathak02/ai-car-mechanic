@@ -1,0 +1,756 @@
+<div class="app-shell">
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+
+  <header class="topbar">
+
+    <div class="brand">
+
+      <div class="brand-icon">
+        🔧
+      </div>
+
+      <div class="brand-text">
+
+        <h1>
+          AI Car Mechanic
+        </h1>
+
+        <p>
+          Smart vehicle diagnosis & assistance
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="status">
+
+      <span class="status-dot"></span>
+
+      <span>
+        AI Online
+      </span>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
+
+  <main class="container">
+
+
+    <!-- ===================================================
+         THREE MAIN SECTIONS
+    ==================================================== -->
+
+    <div class="main-grid">
+
+
+      <!-- =================================================
+           HERO / INTRO
+      ================================================== -->
+
+      <section class="hero">
+
+        <div class="hero-content">
+
+          <span class="badge">
+            AI POWERED
+          </span>
+
+
+          <h2>
+            Your Intelligent
+            <br>
+            Car Assistant
+          </h2>
+
+
+          <p>
+            Describe your car problem or upload an image.
+            Our AI will analyze the issue and guide you.
+          </p>
+
+
+          <div class="hero-points">
+
+            <div class="hero-point">
+
+              <span class="hero-point-icon">
+                💬
+              </span>
+
+              <div>
+                <strong>
+                  Describe Problem
+                </strong>
+
+                <small>
+                  Tell the AI what is wrong
+                </small>
+              </div>
+
+            </div>
+
+
+            <div class="hero-point">
+
+              <span class="hero-point-icon">
+                📷
+              </span>
+
+              <div>
+                <strong>
+                  Upload Image
+                </strong>
+
+                <small>
+                  Let AI inspect your vehicle
+                </small>
+              </div>
+
+            </div>
+
+
+            <div class="hero-point">
+
+              <span class="hero-point-icon">
+                🩺
+              </span>
+
+              <div>
+                <strong>
+                  Get Diagnosis
+                </strong>
+
+                <small>
+                  Receive AI-powered guidance
+                </small>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="hero-footer">
+
+            <span class="hero-footer-icon">
+              ⚡
+            </span>
+
+            <div>
+
+              <strong>
+                Smart AI Analysis
+              </strong>
+
+              <small>
+                Fast and intelligent vehicle assistance
+              </small>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =================================================
+           CHAT ASSISTANT
+      ================================================== -->
+
+      <section class="chat-card">
+
+
+        <!-- CHAT HEADER -->
+
+        <div class="card-header">
+
+          <div class="card-heading">
+
+            <div class="card-icon">
+              🔧
+            </div>
+
+            <div>
+
+              <h3>
+                Mechanic Assistant
+              </h3>
+
+              <p>
+                Describe your vehicle problem
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <span class="online-badge">
+
+            <span class="online-dot"></span>
+
+            Online
+
+          </span>
+
+        </div>
+
+
+
+        <!-- CHAT MESSAGES -->
+
+        <div class="messages">
+
+          <div
+            *ngFor="let m of messages"
+            class="message-row"
+            [class.user-row]="m.role === 'user'"
+          >
+
+            <div
+              class="avatar"
+              [class.user-avatar]="m.role === 'user'"
+            >
+
+              {{ m.role === 'user' ? '👤' : '🔧' }}
+
+            </div>
+
+
+            <div
+              class="message"
+              [class.user-message]="m.role === 'user'"
+            >
+
+              <div class="message-name">
+
+                {{ m.role === 'user' ? 'You' : 'Mechanic' }}
+
+              </div>
+
+
+              <div class="message-text">
+
+                {{ m.text }}
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- LOADING -->
+
+          <div
+            *ngIf="loading"
+            class="message-row"
+          >
+
+            <div class="avatar">
+              🔧
+            </div>
+
+
+            <div class="message ai-loading">
+
+              <div class="message-name">
+                Mechanic
+              </div>
+
+
+              <div class="thinking">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <small>
+                  Analyzing...
+                </small>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- EMPTY CHAT -->
+
+          <div
+            *ngIf="messages.length === 0 && !loading"
+            class="empty-chat"
+          >
+
+            <div class="empty-icon">
+              💬
+            </div>
+
+            <h4>
+              Start a conversation
+            </h4>
+
+            <p>
+              Describe your car problem below
+              and the AI mechanic will help you.
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ACTIONS -->
+
+        <div class="action-bar">
+
+
+          <label class="upload-button">
+
+            <span>
+              📎
+            </span>
+
+            <span>
+              Upload Image
+            </span>
+
+
+            <input
+              type="file"
+              accept="image/*,audio/*,video/*"
+              (change)="fileSelected($event)"
+              hidden
+            />
+
+          </label>
+
+
+
+          <button
+            class="diagnosis-button"
+            (click)="runDiagnosis()"
+            [disabled]="loading"
+          >
+
+            <span>
+              🩺
+            </span>
+
+            <span>
+              Get Diagnosis
+            </span>
+
+          </button>
+
+        </div>
+
+
+
+        <!-- COMPOSER -->
+
+        <div class="composer">
+
+          <input
+            [(ngModel)]="input"
+            (keyup.enter)="send()"
+            placeholder="Example: My car is overheating..."
+            [disabled]="loading"
+          />
+
+
+          <button
+            class="send-button"
+            (click)="send()"
+            [disabled]="loading || !input.trim()"
+          >
+
+            Send
+
+          </button>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =================================================
+           DIAGNOSIS
+      ================================================== -->
+
+      <section class="diagnosis-card">
+
+
+        <!-- =================================================
+             DIAGNOSIS AVAILABLE
+        ================================================== -->
+
+        <ng-container *ngIf="diagnosis; else emptyDiagnosis">
+
+
+          <!-- HEADER -->
+
+          <div class="diagnosis-header">
+
+            <div class="card-heading">
+
+              <div class="card-icon">
+                🩺
+              </div>
+
+              <div>
+
+                <h3>
+                  AI Diagnosis
+                </h3>
+
+                <p>
+                  Vehicle analysis completed
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <span class="completed-badge">
+
+              ✓ Completed
+
+            </span>
+
+          </div>
+
+
+
+          <!-- AI RESULT -->
+
+          <div
+            class="diagnosis-content"
+            [innerHTML]="formatDiagnosis(diagnosis)"
+          ></div>
+
+
+
+          <!-- RECOMMENDATION -->
+
+          <div class="recommendation">
+
+            <div class="recommendation-icon">
+              💡
+            </div>
+
+
+            <div class="recommendation-text">
+
+              <h4>
+                Recommended Service
+              </h4>
+
+              <p>
+                {{ recommendation }}
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- BOOK -->
+
+          <button
+            class="book-button"
+            (click)="openBooking()"
+          >
+
+            <span>
+              🔧
+            </span>
+
+            <span>
+              Book a Mechanic
+            </span>
+
+          </button>
+
+
+        </ng-container>
+
+
+
+        <!-- =================================================
+             EMPTY DIAGNOSIS
+        ================================================== -->
+
+        <ng-template #emptyDiagnosis>
+
+          <div class="empty-diagnosis">
+
+            <div class="empty-diagnosis-icon">
+              🩺
+            </div>
+
+
+            <h3>
+              AI Diagnosis
+            </h3>
+
+
+            <p>
+              Upload a car image and click
+              <strong>Get Diagnosis</strong>
+              to see the AI analysis here.
+            </p>
+
+
+            <div class="diagnosis-steps">
+
+              <div>
+
+                <span>
+                  1
+                </span>
+
+                Upload image
+
+              </div>
+
+
+              <div>
+
+                <span>
+                  2
+                </span>
+
+                Get diagnosis
+
+              </div>
+
+
+              <div>
+
+                <span>
+                  3
+                </span>
+
+                View recommendation
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </ng-template>
+
+      </section>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         BOOKING
+    ==================================================== -->
+
+    <section
+      class="booking-card"
+      *ngIf="showBooking"
+    >
+
+
+      <div class="booking-header">
+
+        <div class="booking-title">
+
+          <div class="booking-icon">
+            🔧
+          </div>
+
+          <div>
+
+            <h3>
+              Book a Mechanic
+            </h3>
+
+            <p>
+              Schedule a professional inspection
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="close-button"
+          (click)="showBooking = false"
+        >
+
+          ✕
+
+        </button>
+
+      </div>
+
+
+
+      <div class="booking-grid">
+
+
+        <!-- NAME -->
+
+        <div class="field">
+
+          <label>
+            Name
+          </label>
+
+          <input
+            [(ngModel)]="booking.name"
+            placeholder="Enter your name"
+          />
+
+        </div>
+
+
+
+        <!-- PHONE -->
+
+        <div class="field">
+
+          <label>
+            Phone
+          </label>
+
+          <input
+            [(ngModel)]="booking.phone"
+            placeholder="Enter phone number"
+          />
+
+        </div>
+
+
+
+        <!-- CAR -->
+
+        <div class="field">
+
+          <label>
+            Car Model / Year
+          </label>
+
+          <input
+            [(ngModel)]="booking.car_model"
+            placeholder="Example: Hyundai i20 2020"
+          />
+
+        </div>
+
+
+
+        <!-- DATE -->
+
+        <div class="field">
+
+          <label>
+            Preferred Date
+          </label>
+
+          <input
+            [(ngModel)]="booking.preferred_date"
+            type="date"
+          />
+
+        </div>
+
+
+
+        <!-- TIME -->
+
+        <div class="field">
+
+          <label>
+            Preferred Time
+          </label>
+
+          <input
+            [(ngModel)]="booking.preferred_time"
+            type="time"
+          />
+
+        </div>
+
+
+
+        <!-- ISSUE -->
+
+        <div class="field full">
+
+          <label>
+            Issue
+          </label>
+
+          <textarea
+            [(ngModel)]="booking.issue"
+            placeholder="Describe the issue..."
+          ></textarea>
+
+        </div>
+
+      </div>
+
+
+
+      <button
+        class="confirm-button"
+        (click)="submitBooking()"
+      >
+
+        <span>
+          ✓
+        </span>
+
+        Confirm Booking
+
+      </button>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer>
+
+    <p>
+      AI Car Mechanic • Intelligent vehicle assistance
+    </p>
+
+  </footer>
+
+</div>
