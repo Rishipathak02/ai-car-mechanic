@@ -9,7 +9,7 @@ export class ApiService {
 
   private http = inject(HttpClient);
 
-  private base = 'http://localhost:8000/api';
+  private base = 'https://ai-car-mechanic-2y4j.onrender.com/api';
 
 
   // =========================
